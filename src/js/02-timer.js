@@ -27,6 +27,8 @@ const options = {
                     let timerTime = convertMs(newDate.getTime() - Date.now())
                     if ((newDate.getTime() - Date.now()) < 0) {
                         clearInterval(timer);
+                        btn.removeAttribute('disabled');
+                        input.removeAttribute('disabled');
                         return;
                     }
                     timerDays.textContent = addLeadingZero(timerTime.days);
@@ -34,7 +36,10 @@ const options = {
                     timerMinutes.textContent = addLeadingZero(timerTime.minutes);
                     timerseconds.textContent = addLeadingZero(timerTime.seconds);
                 }, 1000);
+                btn.setAttribute('disabled', "");
+                input.setAttribute('disabled', "");
             }
+            
 
         } else {
             btn.setAttribute('disabled', "");
@@ -42,6 +47,7 @@ const options = {
         }
     },
 };
+
 
 let fp = flatpickr(input, options);
 // console.log(options.onClose());
